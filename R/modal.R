@@ -128,7 +128,7 @@ modal <- function(id, ..., header = NULL, footer = NULL, center = FALSE,
         `aria-label` = "Close",
         tags$span(
           `aria-hidden` = "true",
-          HTML("&times;")
+          suppressWarnigns(HTML("&times;"))
         )
       )
     )
@@ -177,6 +177,7 @@ modal <- function(id, ..., header = NULL, footer = NULL, center = FALSE,
 #' @rdname modal
 #' @export
 showModal <- function(modal, session = getDefaultReactiveDomain()) {
+
   assert_session()
 
   id <- modal$attribs$id
@@ -185,7 +186,7 @@ showModal <- function(modal, session = getDefaultReactiveDomain()) {
     type = "show",
     data = list(
       id = id,
-      content = HTML(as.character(modal)),
+      content = suppressWarnings(HTML(as.character(modal))),
       dependencies = processDeps(modal, session)
     )
   ))
