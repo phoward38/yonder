@@ -128,7 +128,7 @@ modal <- function(id, ..., header = NULL, footer = NULL, center = FALSE,
         `aria-label` = "Close",
         tags$span(
           `aria-hidden` = "true",
-          suppressWarnigns(HTML("&times;"))
+          suppressWarnings(HTML("&times;"))
         )
       )
     )
