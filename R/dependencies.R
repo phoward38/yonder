@@ -89,16 +89,16 @@ dep_yonder <- function() {
         href = "yonder/bs-custom-file-input"
       ),
       script = "js/bs-custom-file-input.min.js"
-    )#,
-    # htmlDependency(
-    #   name = "shiny",
-    #   version = "3.3.3",
-    #   src = c(
-    #     file = system.file("www/shared/", package = "shiny"),
-    #     href = "shared"
-    #   ),
-    #   script = "shiny.min.js"
-    # )
+    ),
+    htmlDependency(
+      name = "shiny-javascript",
+      version = "3.3.3",
+      src = c(
+        file = system.file("www/shared/", package = "shiny"),
+        href = "shared"
+      ),
+      script = "shiny.min.js"
+    )
   )
 }
 
