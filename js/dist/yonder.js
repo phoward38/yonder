@@ -1314,6 +1314,9 @@
       $el.on("change.yonder", function (e) {
         return callback();
       });
+      $el.on("radiobar.select.yonder", function (e) {
+        return callback();
+      });
     },
     unsubscribe: function unsubscribe(el) {
       $(el).off(".yonder");
@@ -1326,10 +1329,10 @@
       if (msg.selected) {
         el.querySelectorAll("input").forEach(function (input) {
           if (msg.selected.indexOf(input.value) > -1) {
-            input.checked = true;
+            input.setAttribute("checked", "");
             input.parentNode.classList.add("active");
           } else {
-            input.checked = false;
+            input.removeAttribute("checked");
             input.parentNode.classList.remove("active");
           }
         });
