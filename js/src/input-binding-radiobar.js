@@ -9,7 +9,9 @@ $.extend(radiobarInputBinding, {
     { type: "click" },
     { type: "change" }
   ],
-  find: (scope) => scope.querySelectorAll(".yonder-radiobar[id]"),
+  find: (scope) => {
+    return scope.querySelectorAll(".yonder-radiobar[id]");
+  },
   getValue: (el) => {
     let radios = el.querySelectorAll("input:checked:not(:disabled)");
 
@@ -24,6 +26,7 @@ $.extend(radiobarInputBinding, {
 
     $el.on("click.yonder", e => callback());
     $el.on("change.yonder", e => callback());
+    $el.on("radiobar.select.yonder", e => callback());
   },
   unsubscribe: (el) => {
     $(el).off(".yonder");
@@ -36,10 +39,10 @@ $.extend(radiobarInputBinding, {
     if (msg.selected) {
       el.querySelectorAll("input").forEach(input => {
         if (msg.selected.indexOf(input.value) > -1) {
-          input.checked = true;
+          input.setAttribute("checked", "");
           input.parentNode.classList.add("active");
         } else {
-          input.checked = false;
+          input.removeAttribute("checked");
           input.parentNode.classList.remove("active");
         }
       });
